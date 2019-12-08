@@ -14,7 +14,7 @@ import com.example.mycam.ui.models.Merk;
 
 import java.util.List;
 
-public class KameraAdapter {
+public class KameraAdapter extends RecyclerView.Adapter<KameraAdapter.MyViewHolder>  {
     List<Merk> merkList;
 
     public KameraAdapter(List<Merk> merkList) {
@@ -54,7 +54,7 @@ public class KameraAdapter {
         public TextView namaMerk;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            namaMerk = itemView.findViewById(R.id.namaMerk);
+            //namaMerk = itemView.findViewById(R.id.namaMerk);
         }
     }
 }

@@ -23,13 +23,6 @@ public class AdminFragment extends Fragment {
         adminViewModel =
                 ViewModelProviders.of(this).get(AdminViewModel.class);
         View root = inflater.inflate(R.layout.fragment_admin, container, false);
-        final TextView textView = root.findViewById(R.id.text_admin);
-        adminViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }

@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.mycam.ui.Kategori.KategoriFragment;
+import com.example.mycam.ui.adapters.MerkAdapter;
 import com.example.mycam.ui.admin.AdminFragment;
+import com.example.mycam.ui.models.Merk;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
@@ -15,11 +17,18 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView navigationView;
+    RecyclerView rvMerk;
+    List<Merk> listMerk = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +47,28 @@ public class MainActivity extends AppCompatActivity
         navigationView = findViewById(R.id.nav_view);
         navigationView.setOnNavigationItemSelectedListener(this);
         openFragment(new KategoriFragment());
+
+        //menyambungkan rvClub ke layout
+        rvMerk = findViewById(R.id.rvMerk);
+        //Membuat object club
+        Merk merk = new Merk( R.drawable.canon);
+        listMerk.add(merk);
+        //membuat object club baru
+        merk = new Merk( R.drawable.nikon);
+        listMerk.add(merk);
+        merk = new Merk( R.drawable.sony);
+        listMerk.add(merk);
+        merk = new Merk( R.drawable.fujifilm);
+        listMerk.add(merk);
+        merk = new Merk( R.drawable.samsung);
+        listMerk.add(merk);
+        merk = new Merk( R.drawable.kodak);
+        listMerk.add(merk);
+
+//        com.example.tugas1.adapters.ClubAdapter clubAdapter = new com.example.tugas1.adapters.ClubAdapter(listClub);
+        MerkAdapter merkAdapter = new MerkAdapter(listMerk);
+        rvMerk.setAdapter(merkAdapter);
+        rvMerk.LayoutManager(new LinearLayoutManager(this));
     }
 
     @Override

@@ -1,17 +1,17 @@
 package com.example.mycam.ui.models;
 
 public class Merk {
-    public String namaMerk;
+    public int namaMerk;
 
-    public Merk(String namaMerk) {
+    public Merk(int namaMerk) {
         this.namaMerk = namaMerk;
     }
 
-    public String getNamaMerk() {
+    public int getNamaMerk() {
         return namaMerk;
     }
 
-    public void setNamaMerk(String namaMerk) {
+    public void setNamaMerk(int namaMerk) {
         this.namaMerk = namaMerk;
     }
 }

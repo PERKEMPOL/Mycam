@@ -39,5 +39,11 @@ public interface  Service {
     @POST("pemesanan/ajax_action_get_kamera_id")
     Call<JsonObject> actDetailkamera(@Field("id") String id);
 
+    // Fungsi login
+    @FormUrlEncoded
+    @POST("login/ajax_action_login")
+    Call<ResponseBody> PassswordRequest(@Field("username") String username,
+                                        @Field("password") String password);
+
 
 }

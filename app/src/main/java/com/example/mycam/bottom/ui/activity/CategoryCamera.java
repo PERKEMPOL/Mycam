@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.example.mycam.R;
 import com.example.mycam.adapter.KameraAdapter;
 import com.example.mycam.bottom.Tools.PublicTools;
+import com.example.mycam.bottom.Tools.RecyclerItemClickListener;
 import com.example.mycam.bottom.model.KameraItem;
 import com.example.mycam.bottom.ui.service.ApiClient;
 import com.example.mycam.bottom.ui.service.Service;
@@ -32,6 +34,7 @@ public class CategoryCamera extends AppCompatActivity {
     private PublicTools tools;
     private KameraAdapter adapter;
     PublicTools publicTools;
+    private List<KameraItem> payArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +59,9 @@ public class CategoryCamera extends AppCompatActivity {
             public void onResponse(Call<List<KameraItem>> call, Response<List<KameraItem>> response) {
 
                 if(response.isSuccessful()) {
-                    generateDataList(response.body());
+                    payArrayList = response.body();
+                    generateDataList(payArrayList);
+//                    generateDataList(response.body());
                 }else{
                     Log.e("aa",response.body().toString());
                     Toast.makeText(getApplicationContext(), "Layanan Saat ini sendang gagguan", Toast.LENGTH_SHORT).show();
@@ -79,5 +84,27 @@ public class CategoryCamera extends AppCompatActivity {
         adapter = new KameraAdapter(priceItem,getApplicationContext());
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getApplicationContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                        String id_merk = payArrayList.get(position).getIdKamera();
+                        String id_harga = payArrayList.get(position).getHargaKamera();
+                        Intent i = new Intent(getApplicationContext(), PembelianActivity.class);
+                        i.putExtra("id_merk",id_merk);
+                        i.putExtra("id_harga",id_harga);
+                        startActivity(i);
+
+
+
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+                }
+
+                ));
     }
 }

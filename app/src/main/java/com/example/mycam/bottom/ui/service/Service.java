@@ -27,4 +27,13 @@ public interface  Service {
     Call<List<CategoriItem>> getAllMerk();
 
 
+    @FormUrlEncoded
+    @POST("pemesanan/ajax_action_pemesanan")
+    Call<ResponseBody> actPemesanan(@Field("nama_pemesan") String nama_pemesanan,
+                                        @Field("id_kamera") String id_kamera,
+                                        @Field("nomor_pemesan") String nomor_pemesanan,
+                                        @Field("alamat_pemesan") String alamat,
+                                        @Field("email_pemesan") String email);
+
+
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mycam.R;
@@ -24,20 +25,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PembelianActivity extends AppCompatActivity {
-
+    EditText email_pemesan,alamat_pemesan,nomor_pemesan,nama_pemesan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembelian);
+        email_pemesan = findViewById(R.id.email_pemesan);
+        alamat_pemesan = findViewById(R.id.alamat_pemesan);
+        nomor_pemesan = findViewById(R.id.nomor_pemesan);
+        nama_pemesan = findViewById(R.id.nama_pemesan);
     }
 
     public void pembelian(){
         Service service = ApiClient.getRetrofitInstance().create(Service.class);
         String id = getIntent().getStringExtra("id_merk");
-        String nama = "coba";
-        String nomor = "coba";
-        String alamat = "coba";
-        String email = "coba";
+        String nama = nama_pemesan.getText().toString();
+        String nomor = nomor_pemesan.getText().toString();
+        String alamat = alamat_pemesan.getText().toString();
+        String email = email_pemesan.getText().toString();
 
         Call<ResponseBody> call = service.actPemesanan(nama,id,nomor,alamat,email);
         call.enqueue(new Callback<ResponseBody>() {

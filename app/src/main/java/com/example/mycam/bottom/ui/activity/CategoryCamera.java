@@ -90,7 +90,7 @@ public class CategoryCamera extends AppCompatActivity {
                         // do whatever
                         String id_merk = payArrayList.get(position).getIdKamera();
                         String id_harga = payArrayList.get(position).getHargaKamera();
-                        Intent i = new Intent(getApplicationContext(), PembelianActivity.class);
+                        Intent i = new Intent(getApplicationContext(), DetailKamera.class);
                         i.putExtra("id_merk",id_merk);
                         i.putExtra("id_harga",id_harga);
                         startActivity(i);

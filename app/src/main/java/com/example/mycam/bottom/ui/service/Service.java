@@ -35,5 +35,9 @@ public interface  Service {
                                         @Field("alamat_pemesan") String alamat,
                                         @Field("email_pemesan") String email);
 
+    @FormUrlEncoded
+    @POST("pemesanan/ajax_action_get_kamera_id")
+    Call<JsonObject> actDetailkamera(@Field("id") String id);
+
 
 }

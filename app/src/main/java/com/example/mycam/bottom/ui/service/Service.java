@@ -2,6 +2,7 @@ package com.example.mycam.bottom.ui.service;
 
 import com.example.mycam.bottom.model.CategoriItem;
 import com.example.mycam.bottom.model.KameraItem;
+import com.example.mycam.bottom.model.PemesananItem;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -38,6 +39,9 @@ public interface  Service {
     @FormUrlEncoded
     @POST("pemesanan/ajax_action_get_kamera_id")
     Call<JsonObject> actDetailkamera(@Field("id") String id);
+
+    @GET("pemesanan/ajax_action_get_pemesanan_all")
+    Call<List<PemesananItem>> getPemesanan();
 
     // Fungsi login
     @FormUrlEncoded

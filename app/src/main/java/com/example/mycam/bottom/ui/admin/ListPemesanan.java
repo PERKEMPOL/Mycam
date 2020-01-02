@@ -22,6 +22,8 @@ import com.example.mycam.bottom.Tools.RecyclerItemClickListener;
 import com.example.mycam.bottom.model.CategoriItem;
 import com.example.mycam.bottom.model.PemesananItem;
 import com.example.mycam.bottom.ui.activity.CategoryCamera;
+import com.example.mycam.bottom.ui.activity.DetailKamera;
+import com.example.mycam.bottom.ui.activity.DetailPemesanan;
 import com.example.mycam.bottom.ui.kategori.KategoriViewModel;
 import com.example.mycam.bottom.ui.service.ApiClient;
 import com.example.mycam.bottom.ui.service.Service;
@@ -96,6 +98,25 @@ public class ListPemesanan extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                        String id_pemesanan = payArrayList.get(position).getIdPemesanan();
+                        Intent i = new Intent(getActivity(), DetailPemesanan.class);
+                        i.putExtra("id_pemesanan",id_pemesanan);
+                        startActivity(i);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+                }
+
+                ));
     }
+
+
 
 }

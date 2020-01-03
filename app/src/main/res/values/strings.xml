@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mycam</string>
+    <string name="app_name">Mycam_Malang</string>
     <string name="title_activity_bottom_navigation">BottomNavigation</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>

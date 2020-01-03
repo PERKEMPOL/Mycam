@@ -94,9 +94,6 @@ public class CategoryCamera extends AppCompatActivity {
                         i.putExtra("id_merk",id_merk);
                         i.putExtra("id_harga",id_harga);
                         startActivity(i);
-
-
-
                     }
 
                     @Override

@@ -69,7 +69,7 @@ public class ListPemesanan extends Fragment {
     }
 
 
-    public  void list(){
+    public void list(){
         Service service = ApiClient.getRetrofitInstance().create(Service.class);
         Call<List<PemesananItem>> call = service.getPemesanan();
         call.enqueue(new Callback<List<PemesananItem>>() {

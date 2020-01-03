@@ -40,6 +40,10 @@ public interface  Service {
     @POST("pemesanan/ajax_action_get_kamera_id")
     Call<JsonObject> actDetailkamera(@Field("id") String id);
 
+    @FormUrlEncoded
+    @POST("pemesanan/ajax_action_get_pemesanan_id")
+    Call<JsonObject> actDetailpemesanan(@Field("id") String id);
+
     @GET("pemesanan/ajax_action_get_pemesanan_all")
     Call<List<PemesananItem>> getPemesanan();
 
@@ -48,6 +52,4 @@ public interface  Service {
     @POST("login/ajax_action_login")
     Call<ResponseBody> PassswordRequest(@Field("username") String username,
                                         @Field("password") String password);
-
-
 }

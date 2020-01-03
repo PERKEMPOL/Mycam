@@ -4,30 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cam13"
     android:orientation="vertical"
     tools:context=".bottom.ui.activity.DetailKamera">
 
     <ImageView
+        android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/logo"/>
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
+        android:id="@+id/keterengan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"
-        android:id="@+id/keterengan"/>
+        android:lineSpacingExtra="8sp"
+        android:text="Detail Per Kamera"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:fontFamily="serif-monospace" />
 
     <Button
+        android:id="@+id/pesan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pesan"
-        android:onClick="pemesanan"
         android:layout_marginTop="30dp"
+        android:ems="50"
+        android:onClick="pemesanan"
         android:text="pesan"
         tools:ignore="OnClick" />
 

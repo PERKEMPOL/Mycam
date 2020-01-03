@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".bottom.ui.activity.DetailKamera"></activity>
-        <activity android:name=".bottom.ui.activity.PembelianActivity" />
-        <activity android:name=".bottom.ui.activity.CategoryCamera" />
-        <activity android:name=".bottom.BottomNavigation">
+        <activity android:name=".bottom.ui.activity.DetailKamera" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
+        <activity android:name=".bottom.ui.activity.PembelianActivity" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".bottom.ui.activity.CategoryCamera" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".bottom.ui.activity.DetailPemesanan" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".bottom.BottomNavigation" android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+            <activity android:name=".bottom.ui.activity.SplashActivity" android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

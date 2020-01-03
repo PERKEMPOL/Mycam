@@ -2,6 +2,7 @@ package com.example.mycam.bottom.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,7 +48,7 @@ public class DetailPemesanan extends AppCompatActivity {
     public void harga(){
         Service service = ApiClient.getRetrofitInstance().create(Service.class);
         String id = getIntent().getStringExtra("id_pemesanan");
-        Call<JsonObject> call = service.actDetailkamera(id);
+        Call<JsonObject> call = service.actDetailpemesanan(id);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
@@ -64,8 +65,11 @@ public class DetailPemesanan extends AppCompatActivity {
                             String emaill = detail.get("email_pemesan").toString().replace("\"", "");
                             String namakamera = detail.get("id_kamera").toString().replace("\"", "");
                             String total1l = detail.get("harga_kamera").toString().replace("\"", "");
-
-
+                            nama_pemesan.setText(namaa);
+                            nomor_pemesan.setText(nomorr);
+                            alamat_pemesan.setText(alamatt);
+                            email_pemesan.setText(emaill);
+                            namaKamera.setText(namakamera);
                             total.setText(total1l);
 //                            Toast.makeText(getApplicationContext(), nama, Toast.LENGTH_SHORT).show();
                         }
@@ -74,17 +78,23 @@ public class DetailPemesanan extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Layanan Saat ini sendang gagguan", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Mohon Maaf Layanan sedang gagguan", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Mohon Maaf Layanan sedang gangguan", Toast.LENGTH_SHORT).show();
                 Log.e("errorPaymentList",t.getMessage());
             }
 
         });
     }
 
+    public void pemesanan(View view) {
+        String id_pemesanan = getIntent().getStringExtra("id_pemesanan");
+        Intent i = new Intent(getApplicationContext(), DetailPemesanan.class);
+        i.putExtra("id_pemesanan",id_pemesanan);
+        startActivity(i);
+    }
 }

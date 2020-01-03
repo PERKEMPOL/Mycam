@@ -60,7 +60,7 @@ public class PembelianActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonRESULTS = new JSONObject(response.body().string());
                         if (jsonRESULTS.getString("result").equals("true")) {
-                            Toast.makeText(getApplicationContext(), "Pemesanan Berhasil", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "PEMESANAN BERHASIL :)", Toast.LENGTH_SHORT).show();
 
                         } else {
                             String error_message = jsonRESULTS.getString("message");

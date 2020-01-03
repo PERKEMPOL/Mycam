@@ -46,6 +46,7 @@ public class KategoriFragment extends Fragment {
     PublicTools publicTools;
     private List<CategoriItem> payArrayList = new ArrayList<>();
 
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         kategoriViewModel =
@@ -92,6 +93,7 @@ public class KategoriFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getActivity(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
@@ -100,9 +102,6 @@ public class KategoriFragment extends Fragment {
                         Intent i = new Intent(getActivity(), CategoryCamera.class);
                         i.putExtra("id_merk",id_merk);
                         startActivity(i);
-
-
-
                     }
 
                     @Override

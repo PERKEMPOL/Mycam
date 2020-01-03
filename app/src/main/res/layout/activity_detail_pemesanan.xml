@@ -167,13 +167,4 @@
         android:textStyle="bold"
         android:typeface="sans" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="btnPemesanan"
-        android:text="Edit"
-        android:ems="50"
-        android:layout_marginTop="10dp"
-        tools:ignore="OnClick" />
-
 </LinearLayout>

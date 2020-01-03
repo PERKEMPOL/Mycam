@@ -10,12 +10,16 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         android:src="@mipmap/ic_launcher"
         android:id="@+id/logo"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/keterengan"/>
 
     <Button
@@ -23,6 +27,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/pesan"
         android:onClick="pemesanan"
+        android:layout_marginTop="30dp"
         android:text="pesan"
         tools:ignore="OnClick" />
 

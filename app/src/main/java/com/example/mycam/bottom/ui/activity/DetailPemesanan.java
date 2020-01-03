@@ -29,66 +29,24 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PembelianActivity extends AppCompatActivity {
-    EditText email_pemesan,alamat_pemesan,nomor_pemesan,nama_pemesan;
-    TextView total;
+public class DetailPemesanan extends AppCompatActivity {
+    TextView email_pemesan,alamat_pemesan,nomor_pemesan,nama_pemesan, total, namaKamera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pembelian);
+        setContentView(R.layout.activity_detail_pemesanan);
         email_pemesan = findViewById(R.id.email_pemesan);
         alamat_pemesan = findViewById(R.id.alamat_pemesan);
         nomor_pemesan = findViewById(R.id.nomor_pemesan);
         nama_pemesan = findViewById(R.id.nama_pemesan);
+        namaKamera = findViewById(R.id.namaKamera);
         total = findViewById(R.id.total);
         harga();
     }
 
-    public void pembelian(){
-        Service service = ApiClient.getRetrofitInstance().create(Service.class);
-        String id = getIntent().getStringExtra("id_merk");
-        String nama = nama_pemesan.getText().toString();
-        String nomor = nomor_pemesan.getText().toString();
-        String alamat = alamat_pemesan.getText().toString();
-        String email = email_pemesan.getText().toString();
-
-        Call<ResponseBody> call = service.actPemesanan(nama,id,nomor,alamat,email);
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    try {
-                        JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                        if (jsonRESULTS.getString("result").equals("true")) {
-                            Toast.makeText(getApplicationContext(), "Pemesanan Berhasil", Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            String error_message = jsonRESULTS.getString("message");
-                                        Toast.makeText(getApplicationContext(), error_message, Toast.LENGTH_SHORT).show();
-                            Log.e("check",error_message);
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.e("check",e.getMessage());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Log.e("check",e.getMessage());
-                    }
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Mohon Maaf Layanan sedang gagguan", Toast.LENGTH_SHORT).show();
-                Log.e("errorPaymentList",t.getMessage());
-            }
-        });
-    }
-
     public void harga(){
         Service service = ApiClient.getRetrofitInstance().create(Service.class);
-        String id = getIntent().getStringExtra("id_merk");
+        String id = getIntent().getStringExtra("id_pemesanan");
         Call<JsonObject> call = service.actDetailkamera(id);
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -100,8 +58,15 @@ public class PembelianActivity extends AppCompatActivity {
                         Log.d("hasilDetail", array.toString());
                         for (int i = 0; i < array.size(); i++) {
                             JsonObject detail = array.get(i).getAsJsonObject();
-                            String total1 = detail.get("harga_kamera").toString().replace("\"", "");
-                            total.setText(total1);
+                            String namaa = detail.get("nama_pemesan").toString().replace("\"", "");
+                            String nomorr = detail.get("nomor_pemesanan").toString().replace("\"", "");
+                            String alamatt = detail.get("alamat_pemesan").toString().replace("\"", "");
+                            String emaill = detail.get("email_pemesan").toString().replace("\"", "");
+                            String namakamera = detail.get("id_kamera").toString().replace("\"", "");
+                            String total1l = detail.get("harga_kamera").toString().replace("\"", "");
+
+
+                            total.setText(total1l);
 //                            Toast.makeText(getApplicationContext(), nama, Toast.LENGTH_SHORT).show();
                         }
                     } else {
@@ -122,7 +87,4 @@ public class PembelianActivity extends AppCompatActivity {
         });
     }
 
-    public void btnPemesanan(View view) {
-        pembelian();
-    }
 }
